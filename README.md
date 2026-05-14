@@ -28,4 +28,4 @@ View the results:
 
 Gantt Chart - visual execution timeline
 Table - Waiting Time (WT) and Turnaround Time (TAT) per process
-Averages - Average WT and Average TAT
+Averages - Average WT and Average TAT.
