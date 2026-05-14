@@ -1,7 +1,12 @@
 // main.js - Main UI logic for CPU Scheduling Simulator
 
 function generateInputs() {
-    let n = document.getElementById("numProcesses").value;
+    let n = parseInt(document.getElementById("numProcesses").value, 10) || 0;
+    if (n < 3) {
+        alert("Please enter at least 3 processes.");
+        document.getElementById("numProcesses").value = 3;
+        n = 3;
+    }
     let container = document.getElementById("processInputs");
     container.innerHTML = "";
 
@@ -34,7 +39,7 @@ function updateVisibility() {
     }
 
     // Show/hide priority inputs only for priority-based algorithms
-    let n = document.getElementById("numProcesses").value;
+    let n = parseInt(document.getElementById("numProcesses").value, 10) || 0;
     let showPriority = (algo === "prio" || algo === "prio_rr");
 
     for (let i = 0; i < n; i++) {
@@ -54,7 +59,11 @@ function updateVisibility() {
 }
 
 function runSimulation() {
-    let n = document.getElementById("numProcesses").value;
+    let n = parseInt(document.getElementById("numProcesses").value, 10) || 0;
+    if (n < 3) {
+        alert("Please use at least 3 processes before running the simulation.");
+        return;
+    }
     let algo = document.getElementById("algorithm").value;
 
     for (let i = 0; i < n; i++) {
@@ -107,3 +116,5 @@ function runSimulation() {
         alert("Algorithm not implemented yet.");
     }
 }
+
+document.addEventListener("DOMContentLoaded", generateInputs);
